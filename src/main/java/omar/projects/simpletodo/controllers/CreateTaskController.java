@@ -28,20 +28,6 @@ public final class CreateTaskController {
 
     @FXML
     public void initialize() {
-        nameField.sceneProperty().addListener((obs, oldScene, newScene) -> {
-            if (newScene != null) {
-                newScene.windowProperty().addListener((obs2, oldWindow, newWindow) -> {
-                    if (newWindow != null) {
-                        newWindow.setOnHiding(e -> {
-                            if (currentTask != null) {
-                                taskHandler.removeTask(currentTask);
-                                currentTask = null;
-                            }
-                        });
-                    }
-                });
-            }
-        });
     }
 
     public void init(final Task task) {
@@ -77,4 +63,5 @@ public final class CreateTaskController {
         }
 
     }
+
 }
