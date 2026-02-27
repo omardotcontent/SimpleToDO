@@ -2,45 +2,29 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/ui.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="396.0" stylesheets="@../styles/ui.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="omar.projects.simpletodo.controllers.CreateTaskController">
    <bottom>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" styleClass="change-status-button" text="Apply Changes" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="normal-button" text="Create Task" />
-            <Button layoutX="319.0" layoutY="48.0" mnemonicParsing="false" styleClass="danger-button" text="Delete Task" />
+            <Button fx:id="applyButton" mnemonicParsing="false" styleClass="change-status-button" text="Apply Changes" />
+            <Button fx:id="createButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="normal-button" text="Create Task" />
+            <Button fx:id="deleteButton" layoutX="319.0" layoutY="48.0" mnemonicParsing="false" styleClass="danger-button" text="Delete Task" />
          </children>
       </HBox>
    </bottom>
    <center>
-      <VBox spacing="5.0" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Task Name" />
-            <TextField />
-            <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes" />
-            <ScrollPane prefHeight="200.0" prefWidth="200.0">
-               <content>
-                  <VBox>
-                     <children>
-                        <TextField />
-                     </children>
-                  </VBox>
-               </content>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </ScrollPane>
+            <TextField fx:id="nameField" />
+            <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+            <TextField fx:id="descriptionField" layoutX="10.0" layoutY="31.0" />
          </children>
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
