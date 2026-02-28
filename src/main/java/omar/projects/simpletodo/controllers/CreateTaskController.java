@@ -36,9 +36,12 @@ public final class CreateTaskController {
             applyButton.setVisible(true);
             deleteButton.setVisible(true);
             createButton.setVisible(false);
+
             createButton.setManaged(false);
+
             nameField.setText(task.getName());
             descriptionField.setText(task.getDescription());
+
             applyButton.setOnAction(e -> {
                 task.setName(nameField.getText());
                 task.setDescription(descriptionField.getText());
@@ -48,12 +51,16 @@ public final class CreateTaskController {
                 currentTask = null;
                 ((Stage) nameField.getScene().getWindow()).close();
             });
+
         } else {
+
             applyButton.setVisible(false);
-            deleteButton.setVisible(false);
-            applyButton.setManaged(true);
-            deleteButton.setManaged(false);
             createButton.setVisible(true);
+            deleteButton.setVisible(false);
+
+            applyButton.setManaged(false);
+            deleteButton.setManaged(false);
+
             createButton.setOnAction(e -> {
                         new Task(nameField.getText(), descriptionField.getText(), false, taskHandler.getTasks());
                         ((Stage) nameField.getScene().getWindow()).close();
