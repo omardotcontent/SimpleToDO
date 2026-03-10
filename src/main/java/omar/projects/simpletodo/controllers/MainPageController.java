@@ -22,9 +22,7 @@ public final class MainPageController {
     @FXML
     public void initialize() {
         TaskHandler.setTasks(tasks);
-        createTaskButton.setOnAction(e -> {
-           TaskHandler.openPopupDialog(null);
-        });
+        createTaskButton.setOnAction(e -> TaskHandler.openPopupDialog(null));
 
         final List<TaskData> data = DataHandler.load();
 
