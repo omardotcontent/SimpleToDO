@@ -4,12 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import omar.projects.simpletodo.handlers.taskHandler;
+import omar.projects.simpletodo.handlers.TaskHandler;
 import omar.projects.simpletodo.objects.Task;
 
 public final class CreateTaskController {
-
-    private Task currentTask;
 
     @FXML
     private Button applyButton;
@@ -32,7 +30,6 @@ public final class CreateTaskController {
 
     public void init(final Task task) {
         if (task != null) {
-            currentTask = task;
             applyButton.setVisible(true);
             deleteButton.setVisible(true);
             createButton.setVisible(false);
@@ -47,8 +44,7 @@ public final class CreateTaskController {
                 task.setDescription(descriptionField.getText());
             });
             deleteButton.setOnAction(e -> {
-                taskHandler.removeTask(task);
-                currentTask = null;
+                TaskHandler.removeTask(task);
                 ((Stage) nameField.getScene().getWindow()).close();
             });
 
@@ -62,7 +58,7 @@ public final class CreateTaskController {
             deleteButton.setManaged(false);
 
             createButton.setOnAction(e -> {
-                        new Task(nameField.getText(), descriptionField.getText(), false, taskHandler.getTasks());
+                        new Task(nameField.getText(), descriptionField.getText(), false, TaskHandler.getTasks());
                         ((Stage) nameField.getScene().getWindow()).close();
                     }
             );
