@@ -3,7 +3,12 @@ package omar.projects.simpletodo.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import omar.projects.simpletodo.handlers.taskHandler;
+import omar.projects.simpletodo.data.TaskData;
+import omar.projects.simpletodo.handlers.DataHandler;
+import omar.projects.simpletodo.handlers.TaskHandler;
+import omar.projects.simpletodo.objects.Task;
+
+import java.util.List;
 
 public final class MainPageController {
 
@@ -16,10 +21,16 @@ public final class MainPageController {
 
     @FXML
     public void initialize() {
-        taskHandler.setTasks(tasks);
+        TaskHandler.setTasks(tasks);
         createTaskButton.setOnAction(e -> {
-           taskHandler.openPopupDialog(null);
+           TaskHandler.openPopupDialog(null);
         });
+
+        final List<TaskData> data = DataHandler.load();
+
+        for (final TaskData t : data) {
+            new Task(t.name, t.description, t.checked, tasks);
+        }
     }
 
 }
