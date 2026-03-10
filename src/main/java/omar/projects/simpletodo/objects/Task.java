@@ -7,7 +7,8 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import omar.projects.simpletodo.handlers.taskHandler;
+import omar.projects.simpletodo.data.TaskData;
+import omar.projects.simpletodo.handlers.TaskHandler;
 
 
 
@@ -29,6 +30,7 @@ public final class Task {
         this.checked = checked;
         setupBorderPane(tasks);
         setupEvents();
+        TaskHandler.getTaskData().add(this);
     }
 
     private void setupBorderPane(final VBox tasks) {
@@ -100,7 +102,7 @@ public final class Task {
 
         taskBox.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
-                taskHandler.openPopupDialog(this);
+                TaskHandler.openPopupDialog(this);
             }
         });
     }
@@ -137,5 +139,8 @@ public final class Task {
         checkBox.setSelected(checked);
     }
 
+    public TaskData toData() {
+        return new TaskData(name, description, checked);
+    }
 
 }
